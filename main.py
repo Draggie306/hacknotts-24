@@ -2,9 +2,9 @@ import oliver, devraj
 
 print("Hello, world!")
 
-#oliver.serial_listen() 
+oliver.serial_listen() 
 
-
+"""
 import os
 from pydub import AudioSegment
 
@@ -25,3 +25,4 @@ for filename in os.listdir(directory):
         audio.export(mp3_path, format='mp3')
         
         print(f"Converted {m4a_path} to {mp3_path}")
+"""

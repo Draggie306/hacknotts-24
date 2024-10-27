@@ -24,7 +24,7 @@ void loop(void)
 
     process_distance(a);
 
-    //pulse_lights();
+    pulse_lights();
 
     // Reread data from ultrasonic sensor every second (or whatever the value is in ms)
     delay(delay_time_interval);
@@ -85,7 +85,7 @@ void process_distance(int distance)
 void pulse_lights(void)
 {
     Serial.println("[pulse_lights] :: entered func");
-    for (int brightness = 0; brightness <= 255; brightness++)
+    /*for (int brightness = 0; brightness <= 255; brightness++)
     {
         //Serial.print("[pulse_lights] :: adjusting brightness...");
         analogWrite(LED_STRIP_PIN, brightness);
@@ -95,7 +95,7 @@ void pulse_lights(void)
     {
         analogWrite(LED_STRIP_PIN, brightness);
         delay(10); // Adjust delay for pulsing speed
-    }
+    }*/
 }
 
 
