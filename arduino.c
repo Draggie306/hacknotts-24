@@ -18,7 +18,7 @@ void setup()
 
 void loop(void)
 {
-    int delay_time_interval = 1000;
+    int delay_time_interval = 623;
     // put your main code here, to run repeatedly:
     a = sr04.Distance(); // Corrected line
 
