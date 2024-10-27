@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
+    <title>hacknotts24</title>
 </head>
 <body>
+    <h1>hacknotts24</h1>
+    <p>Magical stuff is happening, check the console...</p>
     <script>
+        var veryclosesoundsarray = ["backaway.m4a", "backaway2.m4a", "Backaway3.m4a", "dontobscure.m4a"]
+        var closeishsoundarray = ["donotcomecloser.m4a", "imwarningyou.m4a", "dontcomecloser.m4a"]
+        var farawayarray = ["iseeyou.m4a", "iseeyou2.m4a"];
 
         const socket = new WebSocket('wss://hacknotts24.draggie.workers.dev/ws');
 
@@ -20,16 +25,14 @@
 
             switch (message) {
                 case 'very-close':
-                    // Play audio or show visual indication for "very close"
-                    playAudio('very-close-sound.mp3');
+                    var randomsound = veryclosesoundsarray[Math.floor(Math.random() * veryclosesoundsarray.length)];
+                    playAudio(randomsound);
                     break;
                 case 'close':
-                    // Play audio or show visual indication for "close"
-                    playAudio('close-sound.mp3');
+                    var randomsound = closeishsoundarray[Math.floor(Math.random() * donotcomecloser.length)];
                     break;
                 case 'far':
-                    // Play audio or show visual indication for "far"
-                    playAudio('far-sound.mp3');
+                    var randomsound = farawayarray[Math.floor(Math.random() * farawayarray.length)];
                     break;
             }
         };
