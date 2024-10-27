@@ -9,39 +9,45 @@
     <h1>hacknotts24</h1>
     <p>Magical stuff is happening, check the console...</p>
     <script>
-        var veryclosesoundsarray = ["backaway.m4a", "backaway2.m4a", "Backaway3.m4a", "dontobscure.m4a"]
-        var closeishsoundarray = ["donotcomecloser.m4a", "imwarningyou.m4a", "dontcomecloser.m4a"]
+        var veryclosesoundsarray = ["backaway.m4a", "backaway2.m4a", "Backaway3.m4a", "dontobscure.m4a"];
+        var closeishsoundarray = ["donotcomecloser.m4a", "imwarningyou.m4a", "dontcomecloser.m4a"];
         var farawayarray = ["iseeyou.m4a", "iseeyou2.m4a"];
 
-        const socket = new WebSocket('wss://hacknotts24.draggie.workers.dev/ws');
-
-        socket.onopen = () => {
-            console.log('Connected to WebSocket');
-        };
-
-        socket.onmessage = event => {
-            const message = event.data;
-            console.log('Received:', message);
-
-            switch (message) {
-                case 'very-close':
-                    var randomsound = veryclosesoundsarray[Math.floor(Math.random() * veryclosesoundsarray.length)];
-                    playAudio(randomsound);
-                    break;
-                case 'close':
-                    var randomsound = closeishsoundarray[Math.floor(Math.random() * donotcomecloser.length)];
-                    break;
-                case 'far':
-                    var randomsound = farawayarray[Math.floor(Math.random() * farawayarray.length)];
-                    break;
-            }
-        };
-
-        function playAudio(file) {
-            const audio = new Audio(file);
+        function playSound(file) {
+            var audio = new Audio(file);
             audio.play();
         }
 
-        </script>
+        function getRandomInterval(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min) * 1000;
+        }
+
+        function playSoundsInPattern() {
+            // Play two far away sounds
+            playSound(farawayarray[Math.floor(Math.random() * farawayarray.length)]);
+            setTimeout(() => {
+                playSound(farawayarray[Math.floor(Math.random() * farawayarray.length)]);
+            }, getRandomInterval(8, 12));
+
+            // Play one close-ish sound
+            setTimeout(() => {
+                playSound(closeishsoundarray[Math.floor(Math.random() * closeishsoundarray.length)]);
+            }, getRandomInterval(8, 12));
+
+            // Play two very close sounds
+            setTimeout(() => {
+                playSound(veryclosesoundsarray[Math.floor(Math.random() * veryclosesoundsarray.length)]);
+            }, getRandomInterval(8, 12));
+            setTimeout(() => {
+                playSound(veryclosesoundsarray[Math.floor(Math.random() * veryclosesoundsarray.length)]);
+            }, getRandomInterval(8, 12));
+
+            // Schedule the next pattern after 10 seconds
+            setTimeout(playSoundsInPattern, 10000);
+        }
+
+        // Start the pattern
+        playSoundsInPattern();
+    </script>
 </body>
 </html>

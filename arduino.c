@@ -10,8 +10,8 @@ void setup()
 {
     // put your setup code here, to run once:
     Serial.begin(9600);             // init baud rate
-    delay(1000);                    //   hold on, wait a sec
-    pinMode(LED_STRIP_PIN, OUTPUT); // Set the LED strip pin as an output
+    delay(333);                    //   hold on, wait a sec
+    //pinMode(LED_STRIP_PIN, OUTPUT); // Set the LED strip pin as an output
 
     determine_pins_connected();
 }
@@ -24,19 +24,20 @@ void loop(void)
 
     process_distance(a);
 
-    pulse_lights();
+    //pulse_lights();
 
     // Reread data from ultrasonic sensor every second (or whatever the value is in ms)
     delay(delay_time_interval);
 
-    generate_sounds_and_control_lights(a);
+    //generate_sounds_and_control_lights(a);
 }
 
 void process_distance(int distance)
 {
     // shouldTrigger is flag that is used to control lights or other things.
     int shouldTrigger = 1;
-
+    Serial.print("[process_distance] :: Raw_Distance: ");
+    Serial.print(distance);
 
     Serial.println("\n\n");
     // Case for the distance being zero
