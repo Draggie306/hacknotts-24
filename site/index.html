@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+</head>
+<body>
+    <script>
+
+        const socket = new WebSocket('wss://hacknotts24.draggie.workers.dev/ws');
+
+        socket.onopen = () => {
+            console.log('Connected to WebSocket');
+        };
+
+        socket.onmessage = event => {
+            const message = event.data;
+            console.log('Received:', message);
+
+            switch (message) {
+                case 'very-close':
+                    // Play audio or show visual indication for "very close"
+                    playAudio('very-close-sound.mp3');
+                    break;
+                case 'close':
+                    // Play audio or show visual indication for "close"
+                    playAudio('close-sound.mp3');
+                    break;
+                case 'far':
+                    // Play audio or show visual indication for "far"
+                    playAudio('far-sound.mp3');
+                    break;
+            }
+        };
+
+        function playAudio(file) {
+            const audio = new Audio(file);
+            audio.play();
+        }
+
+        </script>
+</body>
+</html>
